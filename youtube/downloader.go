@@ -21,17 +21,18 @@ type Downloader struct {
 }
 
 func (d *Downloader) download(url, filename string, from, to int) error {
-	d.filename = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(filename, "/", " "), "\\", " "), ",", " ")
+	d.filename = strings.ReplaceAll(strings.ReplaceAll(filename, "\\", " "), ",", " ")
 	d.from = from
 	d.to = to
 
-	_, err := os.Stat(d.filename)
-	if err == nil {
+	stat, _ := os.Stat(d.filename)
+	if stat != nil {
 		return nil
 	}
 
-	_, err = os.Stat(strings.Split(d.filename, ".")[0] + ".mp3")
-	if err == nil {
+	stat, _ = os.Stat(strings.Split(d.filename, ".")[0] + ".mp3")
+
+	if stat != nil {
 		return nil
 	}
 

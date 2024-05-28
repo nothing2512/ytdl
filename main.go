@@ -49,6 +49,7 @@ func convertAudios() {
 			continue
 		}
 
+		fmt.Printf("Converting %v\n", file.Name())
 		m4a := path.Join(*convertPtr, file.Name())
 		mp3 := strings.Split(m4a, ".")[0] + ".mp3"
 		cmd := exec.Command("ffmpeg", "-i", m4a, mp3)
