@@ -21,7 +21,7 @@ type Downloader struct {
 }
 
 func (d *Downloader) download(url, filename string, from, to int) error {
-	d.filename = filename
+	d.filename = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(filename, "/", " "), "\\", " "), ",", " ")
 	d.from = from
 	d.to = to
 
