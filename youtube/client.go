@@ -39,7 +39,7 @@ func (c *Client) GetVideo(id string) (*VideoData, error) {
 		},
 		"contentCheckOk": true,
 		"racyCheckOk":    true,
-		"params":         "CgIQBg==",
+		// "params":         "CgIQBg==",
 	}
 
 	b, err := json.Marshal(body)
